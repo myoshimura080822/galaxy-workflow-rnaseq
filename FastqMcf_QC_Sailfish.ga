@@ -1,0 +1,233 @@
+{
+    "a_galaxy_workflow": "true", 
+    "annotation": "", 
+    "format-version": "0.1", 
+    "name": "FastqMcf_QC_Sailfish", 
+    "steps": {
+        "0": {
+            "annotation": "", 
+            "id": 0, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Input Dataset [Adapter]"
+                }
+            ], 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 217.87155199050903, 
+                "top": 329.41667222976685
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Input Dataset [Adapter]\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "user_outputs": []
+        }, 
+        "1": {
+            "annotation": "", 
+            "id": 1, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Input Dataset [fastq reads]"
+                }
+            ], 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 219.98959398269653, 
+                "top": 402.54167222976685
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Input Dataset [fastq reads]\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "user_outputs": []
+        }, 
+        "2": {
+            "annotation": "", 
+            "id": 2, 
+            "input_connections": {}, 
+            "inputs": [
+                {
+                    "description": "", 
+                    "name": "Input Dataset Input [fastq mates]"
+                }
+            ], 
+            "name": "Input dataset", 
+            "outputs": [], 
+            "position": {
+                "left": 221.96875047683716, 
+                "top": 474.5208592414856
+            }, 
+            "tool_errors": null, 
+            "tool_id": null, 
+            "tool_state": "{\"name\": \"Input Dataset Input [fastq mates]\"}", 
+            "tool_version": null, 
+            "type": "data_input", 
+            "user_outputs": []
+        }, 
+        "3": {
+            "annotation": "", 
+            "id": 3, 
+            "input_connections": {
+                "adpaters": {
+                    "id": 0, 
+                    "output_name": "output"
+                }, 
+                "mates": {
+                    "id": 2, 
+                    "output_name": "output"
+                }, 
+                "reads": {
+                    "id": 1, 
+                    "output_name": "output"
+                }
+            }, 
+            "inputs": [], 
+            "name": "FastqMcf", 
+            "outputs": [
+                {
+                    "name": "log", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "reads_out", 
+                    "type": "fastqsanger"
+                }, 
+                {
+                    "name": "mates_out", 
+                    "type": "fastqsanger"
+                }
+            ], 
+            "position": {
+                "left": 452.88891649246216, 
+                "top": 383.4271092414856
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/jjohnson/fastq_mcf/fastq_mcf/1.0", 
+            "tool_state": "{\"phred\": \"\\\"\\\"\", \"__page__\": 0, \"noclip\": \"\\\"False\\\"\", \"__rerun_remap_job_id__\": null, \"reads\": \"null\", \"mates\": \"null\", \"adpaters\": \"null\", \"trimming\": \"{\\\"nmax\\\": \\\"\\\", \\\"qthr\\\": \\\"\\\", \\\"scale\\\": \\\"\\\", \\\"qwin\\\": \\\"\\\", \\\"rmns\\\": \\\"False\\\", \\\"pctns\\\": \\\"\\\", \\\"ilv3\\\": \\\"\\\", \\\"sampcnt\\\": \\\"\\\", \\\"nkeep\\\": \\\"36\\\", \\\"pctdiff\\\": \\\"\\\", \\\"skewpct\\\": \\\"4.0\\\", \\\"__current_case__\\\": 2, \\\"minpct\\\": \\\"\\\", \\\"choice\\\": \\\"user_set\\\", \\\"nmin\\\": \\\"\\\"}\"}", 
+            "tool_version": "1.0", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "4": {
+            "annotation": "", 
+            "id": 4, 
+            "input_connections": {
+                "input_file": {
+                    "id": 3, 
+                    "output_name": "reads_out"
+                }
+            }, 
+            "inputs": [], 
+            "name": "FastQC", 
+            "outputs": [
+                {
+                    "name": "html_file", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "text_file", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 795.04168748855591, 
+                "top": 199.60764360427856
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.63", 
+            "tool_state": "{\"__page__\": 0, \"contaminants\": \"null\", \"__rerun_remap_job_id__\": null, \"limits\": \"null\", \"input_file\": \"null\"}", 
+            "tool_version": "0.63", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "5": {
+            "annotation": "", 
+            "id": 5, 
+            "input_connections": {
+                "input_file": {
+                    "id": 3, 
+                    "output_name": "mates_out"
+                }
+            }, 
+            "inputs": [], 
+            "name": "FastQC", 
+            "outputs": [
+                {
+                    "name": "html_file", 
+                    "type": "html"
+                }, 
+                {
+                    "name": "text_file", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 798.20141649246216, 
+                "top": 395.75349473953247
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.63", 
+            "tool_state": "{\"__page__\": 0, \"contaminants\": \"null\", \"__rerun_remap_job_id__\": null, \"limits\": \"null\", \"input_file\": \"null\"}", 
+            "tool_version": "0.63", 
+            "type": "tool", 
+            "user_outputs": []
+        }, 
+        "6": {
+            "annotation": "", 
+            "id": 6, 
+            "input_connections": {
+                "single_or_paired|input_mate1": {
+                    "id": 3, 
+                    "output_name": "reads_out"
+                }, 
+                "single_or_paired|input_mate2": {
+                    "id": 3, 
+                    "output_name": "mates_out"
+                }
+            }, 
+            "inputs": [], 
+            "name": "Sailfish_custom", 
+            "outputs": [
+                {
+                    "name": "log", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "quant", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "quant_bias_corrected", 
+                    "type": "txt"
+                }, 
+                {
+                    "name": "reads_count_info", 
+                    "type": "txt"
+                }
+            ], 
+            "position": {
+                "left": 858.482666015625, 
+                "top": 599.97572326660156
+            }, 
+            "post_job_actions": {}, 
+            "tool_errors": null, 
+            "tool_id": "sailfish_custom", 
+            "tool_state": "{\"single_or_paired\": \"{\\\"__current_case__\\\": 1, \\\"orientation\\\": \\\"toward\\\", \\\"input_mate1\\\": null, \\\"single_or_paired_opts\\\": \\\"paired\\\", \\\"strandedness\\\": \\\"unknown\\\", \\\"input_mate2\\\": null}\", \"__page__\": 0, \"__rerun_remap_job_id__\": null, \"index_path\": \"\\\"mm10_refMrna\\\"\"}", 
+            "tool_version": "0.01", 
+            "type": "tool", 
+            "user_outputs": []
+        }
+    }
+}
