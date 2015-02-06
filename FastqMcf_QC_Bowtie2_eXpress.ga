@@ -2,7 +2,7 @@
     "a_galaxy_workflow": "true", 
     "annotation": "", 
     "format-version": "0.1", 
-    "name": "FastqMcf_QC_Sailfish", 
+    "name": "FastqMcf_QC_Bowtie2_eXpress", 
     "steps": {
         "0": {
             "annotation": "", 
